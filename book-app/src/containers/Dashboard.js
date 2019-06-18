@@ -5,6 +5,8 @@ class Dashboard extends React.Component {
     return (
       <div>
         <h2>Dashboard</h2>
+        <input />
+        <button>Search</button>
       </div>
     );
   }
