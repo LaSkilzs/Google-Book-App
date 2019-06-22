@@ -5,10 +5,10 @@ import Tab from "@material-ui/core/Tab";
 const footer = props => {
   return (
     <Paper>
-      <Tabs value={1} indicatorColor="primary" textColor="primary" centered>
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
+      <Tabs value={0} indicatorColor="primary" textColor="primary" centered>
+        <Tab label="Home" />
+        <Tab label="Favorites" />
+        <Tab label="Login" />
       </Tabs>
     </Paper>
   );

@@ -5,7 +5,7 @@ const header = props => {
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
-        <Typography variant="headline" color="inherit">
+        <Typography variant="h3" color="inherit">
           Google Books
         </Typography>
       </Toolbar>
