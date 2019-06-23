@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard";
-import "./css/App.css";
-import { Header, Footer } from "../components/layouts/index";
+import "./App.css";
+import Header from "../components/Header";
 
 class App extends React.Component {
   render() {
@@ -9,8 +9,6 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Dashboard />
-        {/* <Book /> */}
-        {/* <Footer /> */}
       </div>
     );
   }

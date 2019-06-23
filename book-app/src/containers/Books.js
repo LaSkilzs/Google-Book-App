@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Grid,
   Card,
@@ -11,22 +12,46 @@ import {
 
 const Books = bookLists => {
   function FormRow() {
+    console.log(bookLists.bookLists);
     return (
       <React.Fragment>
-        {bookLists.bookList.map(book => {
-          console.log(book);
+        {bookLists.bookLists.map(book => {
           return (
-            <Grid item xs={4}>
+            <Grid item xs={4} key={book.infoLink}>
               <Card>
-                <CardHeader
-                  title={book.title}
-                  subheader={book.authors.map(author => author)}
-                  // {book.publisher}
-                />
-                <CardMedia
-                  image={book.imageLinks.smallThumbnail}
-                  style={{ height: 170, width: 100, margin: "auto" }}
-                />
+                {book.authors ? (
+                  <CardHeader
+                    title={book.title}
+                    subheader={book.authors.map(author => author)}
+                  />
+                ) : (
+                  <CardHeader title={book.title} />
+                )}
+
+                {book.publisher ? (
+                  <CardContent>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {book.publisher}
+                    </Typography>
+                  </CardContent>
+                ) : null}
+
+                {book.imageLinks ? (
+                  <CardMedia
+                    image={book.imageLinks.smallThumbnail}
+                    style={{ height: 170, width: 100, margin: "auto" }}
+                  />
+                ) : (
+                  <CardMedia
+                    image="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg"
+                    style={{ height: 170, width: 100, margin: "auto" }}
+                  />
+                )}
+
                 <CardContent>
                   <Typography
                     variant="body2"
@@ -45,10 +70,11 @@ const Books = bookLists => {
       </React.Fragment>
     );
   }
+
   return (
     <div>
-      <Grid container spacing={1}>
-        <Grid container item xs={12} spacing={3}>
+      <Grid container spacing={4} style={{ marginTop: 20 }}>
+        <Grid container item sm={12} spacing={3}>
           <FormRow />
         </Grid>
       </Grid>
