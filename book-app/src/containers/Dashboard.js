@@ -1,5 +1,14 @@
 import React from "react";
-import { Paper, TextField, Button, Grid, makeStyles } from "@material-ui/core";
+import {
+  Paper,
+  Button,
+  Grid,
+  makeStyles,
+  Chip,
+  Avatar
+} from "@material-ui/core";
+import InputBase from "@material-ui/core/InputBase";
+import FaceIcon from "@material-ui/icons/Face";
 import API from "../Api";
 import Books from "./Books";
 
@@ -9,21 +18,30 @@ class Dashboard extends React.Component {
     this.state = {
       query: "",
       books: [],
-      showBooks: false
+      showBooks: false,
+      errors: [],
+      errorMessage: false
     };
   }
-
   handleSearch = query => this.setState({ query });
   getBooks = () => {
     const search = this.state.query;
     API.getBooks(search).then(books => {
-      const volumeInfo = books.items.map(books => books.volumeInfo);
-      this.setState({ books: volumeInfo, showBooks: true });
+      if (books.error) {
+        this.setState({
+          errors: books.error.message,
+          errorMessage: true,
+          query: ""
+        });
+      } else {
+        const volumeInfo = books.items.map(books => books.volumeInfo);
+        this.setState({ books: volumeInfo, showBooks: true, query: "" });
+      }
     });
   };
 
   render() {
-    const { showBooks } = this.state;
+    const { showBooks, errorMessage } = this.state;
     const classes = makeStyles(theme => ({
       root: {
         padding: theme.spacing(0)
@@ -43,12 +61,13 @@ class Dashboard extends React.Component {
                 width: 450
               }}
             >
-              <TextField
+              <InputBase
+                type="search"
                 id="filled-full-width"
                 style={{ margin: 8, width: 300 }}
-                placeholder="search for books"
-                margin="normal"
+                placeholder=""
                 variant="filled"
+                value={this.state.query}
                 onChange={e => this.handleSearch(e.target.value)}
               />
               <Button
@@ -60,11 +79,25 @@ class Dashboard extends React.Component {
               >
                 Search
               </Button>
+              {errorMessage ? (
+                <Chip
+                  avatar={
+                    <Avatar>
+                      <FaceIcon />
+                    </Avatar>
+                  }
+                  label={this.state.errors}
+                  color="primary"
+                  variant="outlined"
+                />
+              ) : null}
             </Paper>
           </Grid>
         </Grid>
-        {showBooks ? <Books bookList={this.state.books} /> : null}
-        {/* {showBooks ? console.log(this.state.books) : null} */}
+        {/* {showBooks
+          ? this.state.books.map((book, idx) => <Books key={idx} book={book} />)
+          : null} */}
+        {showBooks ? <Books bookLists={this.state.books} /> : null}
       </React.Fragment>
     );
   }

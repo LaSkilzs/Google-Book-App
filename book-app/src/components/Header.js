@@ -1,16 +1,16 @@
 import React from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
-const header = props => {
+const Header = props => {
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
         <Typography variant="h3" color="inherit">
-          Google Books
+          Google Books API
         </Typography>
       </Toolbar>
     </AppBar>
   );
 };
 
-export default header;
+export default Header;
