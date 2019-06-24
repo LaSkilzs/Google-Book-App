@@ -33,6 +33,7 @@ class Dashboard extends React.Component {
           errorMessage: true,
           query: ""
         });
+        setTimeout(() => this.setState({ errorMessage: false }), 5000);
       } else {
         const volumeInfo = books.items.map(books => books.volumeInfo);
         this.setState({ books: volumeInfo, showBooks: true, query: "" });
@@ -86,17 +87,14 @@ class Dashboard extends React.Component {
                       <FaceIcon />
                     </Avatar>
                   }
-                  label={this.state.errors}
-                  color="primary"
+                  label="no results found"
+                  color="secondary"
                   variant="outlined"
                 />
               ) : null}
             </Paper>
           </Grid>
         </Grid>
-        {/* {showBooks
-          ? this.state.books.map((book, idx) => <Books key={idx} book={book} />)
-          : null} */}
         {showBooks ? <Books bookLists={this.state.books} /> : null}
       </React.Fragment>
     );
