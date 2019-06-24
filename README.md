@@ -2,8 +2,14 @@
 code challenge for 8th Light, create a book app using the google api and deploy the app.
 
 ## Directions
-
 Create an application that allows you to use the Google Books API to search for books, and deploy it somewhere that we can access through a web browser.
+
+## How to Use
+1. npm install && npm run start
+2. npm run test
+2. https://angry-beaver-6a9be2.netlify.com
+
+Type name of book that you would like to find, and click on search. If the book is available, a list of books shall appear. You can click on see more, if you would like more information about the book. 
 
 ## Deliverables
 
@@ -18,21 +24,14 @@ Create an application that allows you to use the Google Books API to search for 
 
 Due date: Both components of this step are due by end of day on Wednesday, June 26.
 
-## Steps
+## My WorkFlow
 
 1. Diagram (UI & Flow)
 2. Create App
 3. Test API Connection
-4. Write test for Connection
-5. Create UI Framework
-6. Build FrontEnd Functionality
-7. Write Tests
-8. Connect Firebase
-9. Add backend capabilities for perisistance
-10. Deploy
+4. Create UI Framework
+5. Build FrontEnd Functionality
+6. Write Tests
+7. Deploy using Netlify
 
-### `npm start`
 
-### `npm test`
-
-### `npm run build`
