@@ -21,3 +21,20 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# "homepage" : "http://myname.github.io/myapp",
+# npm install -g serve
+# serve -s build
+#  https://bit.ly/CRA-deploy
+# Admin URL: https://app.netlify.com/sites/angry-beaver-6a9be2
+# URL:       https://angry-beaver-6a9be2.netlify.com
+# Site ID:   4e2f41ec-cca6-46ae-8ecb-c4d3d96b3027
+
+# Logs: https://app.netlify.com/sites/angry-beaver-6a9be2/deploys/5d102fb4e67e3559a7ed4500
+# Live Draft URL: https://5d102fb4e67e3559a7ed4500--angry-beaver-6a9be2.netlify.com
+
+
+ 
+# Logs: https://app.netlify.com/sites/angry-beaver-6a9be2/deploys/5d10300ee67e355c70ed44eb
+# Unique Deploy URL: https://5d10300ee67e355c70ed44eb--angry-beaver-6a9be2.netlify.com
+# Live URL: https://angry-beaver-6a9be2.netlify.com
