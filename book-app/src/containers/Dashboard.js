@@ -33,7 +33,13 @@ class Dashboard extends React.Component {
           errorMessage: true,
           query: ""
         });
-        setTimeout(() => this.setState({ errorMessage: false }), 5000);
+        setTimeout(() => this.setState({ errorMessage: false }), 4000);
+      } else if (books.totalItems === 0) {
+        this.setState({
+          errorMessage: true,
+          query: ""
+        });
+        setTimeout(() => this.setState({ errorMessage: false }), 4000);
       } else {
         const volumeInfo = books.items.map(books => books.volumeInfo);
         this.setState({ books: volumeInfo, showBooks: true, query: "" });
