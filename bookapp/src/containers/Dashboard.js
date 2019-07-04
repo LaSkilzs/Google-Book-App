@@ -12,6 +12,30 @@ import FaceIcon from "@material-ui/icons/Face";
 import API from "../Api";
 import Books from "./Books";
 
+// paper
+// element.style {
+//   padding: 5px;
+//   width: 250px;
+//   margin: 150px auto;
+// }
+
+//button
+// element.style {
+//   margin - top: 10px;
+//   height: 55px;
+// }
+// <style>
+//   .MuiButton-sizeLarge {
+//     padding: 6px 12px;
+//   font-size: 0.9375rem;
+// }
+
+//InputBase
+// element.style {
+//   margin: 8px;
+//   width: 100px;
+// }
+
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
