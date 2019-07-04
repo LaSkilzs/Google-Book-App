@@ -38,8 +38,6 @@ class Dashboard extends React.Component {
       });
       localStorage.clear();
     }
-
-    console.log("mounted");
   }
 
   handleSearch = query => {
@@ -99,8 +97,6 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    console.log("state value", this.state.books);
-    console.log("refresh", this.state.refresh);
     const { showBooks, errorMessage } = this.state;
     const classes = makeStyles(theme => ({
       root: {
