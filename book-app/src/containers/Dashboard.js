@@ -20,10 +20,28 @@ class Dashboard extends React.Component {
       books: [],
       showBooks: false,
       disabled: true,
+      refresh: localStorage.getItem("refresh") || false,
       errors: [],
       errorMessage: false
     };
   }
+
+  componentDidMount() {
+    if (this.state.refresh === "false") {
+      localStorage.clear();
+      console.log(localStorage);
+    }
+    if (localStorage.books !== undefined) {
+      this.setState({
+        showBooks: !this.state.showBooks,
+        books: JSON.parse(localStorage["books"])
+      });
+      localStorage.clear();
+    }
+
+    console.log("mounted");
+  }
+
   handleSearch = query => {
     if (query.length > 0) {
       this.setState({ query, disabled: false });
@@ -41,6 +59,11 @@ class Dashboard extends React.Component {
     }
   };
 
+  handleRefresh = () => {
+    let refresh = true;
+    localStorage.setItem("refresh", refresh);
+  };
+
   getBooks = () => {
     const search = this.state.query;
     API.getBooks(search).then(books => {
@@ -54,22 +77,30 @@ class Dashboard extends React.Component {
           4000
         );
       } else {
-        const volumeInfo = books.items.map(books => books.volumeInfo);
+        const volumeInfo = books.items
+          .map(books => books.volumeInfo)
+          .filter(
+            book =>
+              book.title.toLowerCase().replace(/\W/g, "") !==
+              "missing title".replace(/\W/g, "")
+          );
+
+        localStorage["books"] = JSON.stringify(volumeInfo);
+        let bookStorage = JSON.parse(localStorage["books"]);
+
         this.setState({
-          books: volumeInfo,
+          books: bookStorage || [],
           showBooks: true,
           query: "",
           disabled: true
         });
-        // localStorage["books"] = JSON.stringify(volumeInfo);
       }
     });
   };
 
   render() {
-    // const bookresult = JSON.parse(localStorage["books"]);
-    // console.log(bookresult);
-
+    console.log("state value", this.state.books);
+    console.log("refresh", this.state.refresh);
     const { showBooks, errorMessage } = this.state;
     const classes = makeStyles(theme => ({
       root: {
@@ -126,7 +157,12 @@ class Dashboard extends React.Component {
             </Paper>
           </Grid>
         </Grid>
-        {showBooks ? <Books bookLists={this.state.books} /> : null}
+        {showBooks ? (
+          <Books
+            bookLists={this.state.books}
+            handleRefresh={this.handleRefresh}
+          />
+        ) : null}
       </React.Fragment>
     );
   }
