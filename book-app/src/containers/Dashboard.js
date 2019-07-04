@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
     if (this.state.refresh === "false") {
       localStorage.clear();
     }
-    if (localStorage.books !== undefined) {
+    if (localStorage.books !== undefined && this.state.refresh) {
       this.setState({
         showBooks: !this.state.showBooks,
         books: JSON.parse(localStorage["books"])
