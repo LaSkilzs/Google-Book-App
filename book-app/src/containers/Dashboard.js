@@ -29,7 +29,6 @@ class Dashboard extends React.Component {
   componentDidMount() {
     if (this.state.refresh === "false") {
       localStorage.clear();
-      console.log(localStorage);
     }
     if (localStorage.books !== undefined) {
       this.setState({
@@ -66,6 +65,7 @@ class Dashboard extends React.Component {
     const search = this.state.query;
     API.getBooks(search).then(books => {
       if (books.totalItems === 0) {
+        localStorage.clear();
         this.setState({
           errorMessage: true,
           query: ""
@@ -107,13 +107,13 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
         <Grid container spacing={3}>
-          <Grid item md>
+          <Grid item xs={12}>
             <Paper
               className={classes.root}
               style={{
                 padding: 10,
                 margin: "auto",
-                marginTop: 25,
+                marginTop: 100,
                 width: 450
               }}
             >

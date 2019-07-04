@@ -15,7 +15,7 @@ const Books = props => {
       <React.Fragment>
         {props.bookLists.map(book => {
           return (
-            <Grid item xs={4} key={book.infoLink}>
+            <Grid item xs={12} sm={6} md={4} key={book.infoLink}>
               <Card>
                 {book.authors ? (
                   <CardHeader
@@ -75,8 +75,8 @@ const Books = props => {
 
   return (
     <div>
-      <Grid container spacing={4} style={{ marginTop: 20 }}>
-        <Grid container item sm={12} spacing={3}>
+      <Grid container style={{ marginTop: 20 }}>
+        <Grid container spacing={3}>
           <FormRow />
         </Grid>
       </Grid>
