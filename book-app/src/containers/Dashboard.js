@@ -19,35 +19,57 @@ class Dashboard extends React.Component {
       query: "",
       books: [],
       showBooks: false,
+      disabled: true,
       errors: [],
       errorMessage: false
     };
   }
-  handleSearch = query => this.setState({ query });
+  handleSearch = query => {
+    if (query.length > 0) {
+      this.setState({ query, disabled: false });
+    } else if (query.length === 0) {
+      this.setState({ query, disabled: true });
+    } else {
+      this.setState({ query });
+    }
+  };
+
+  handleEnter = enter => {
+    if (enter === "Enter") {
+      this.setState({ disabled: true });
+      this.getBooks();
+    }
+  };
+
   getBooks = () => {
     const search = this.state.query;
     API.getBooks(search).then(books => {
-      if (books.error) {
-        this.setState({
-          errors: books.error.message,
-          errorMessage: true,
-          query: ""
-        });
-        setTimeout(() => this.setState({ errorMessage: false }), 4000);
-      } else if (books.totalItems === 0) {
+      if (books.totalItems === 0) {
         this.setState({
           errorMessage: true,
           query: ""
         });
-        setTimeout(() => this.setState({ errorMessage: false }), 4000);
+        setTimeout(
+          () => this.setState({ errorMessage: false, disabled: true }),
+          4000
+        );
       } else {
         const volumeInfo = books.items.map(books => books.volumeInfo);
-        this.setState({ books: volumeInfo, showBooks: true, query: "" });
+        this.setState({
+          books: volumeInfo,
+          showBooks: true,
+          query: "",
+          disabled: true
+        });
+        // localStorage["books"] = JSON.stringify(volumeInfo);
       }
     });
   };
 
   render() {
+    // const bookresult = JSON.parse(localStorage["books"]);
+    // console.log(bookresult);
+
     const { showBooks, errorMessage } = this.state;
     const classes = makeStyles(theme => ({
       root: {
@@ -72,15 +94,18 @@ class Dashboard extends React.Component {
                 type="search"
                 id="filled-full-width"
                 style={{ margin: 8, width: 300 }}
-                placeholder=""
+                placeholder="Search for book by title"
                 variant="filled"
                 value={this.state.query}
                 onChange={e => this.handleSearch(e.target.value)}
+                onKeyPress={e => this.handleEnter(e.key)}
               />
+
               <Button
                 variant="outlined"
                 color="primary"
                 size="large"
+                disabled={this.state.disabled}
                 style={{ marginTop: 10, height: 55 }}
                 onClick={e => this.getBooks()}
               >
