@@ -19,17 +19,13 @@ const theme = createMuiTheme({
     MuiCard: {
       root: {
         margin: "auto",
+        maxWidth: "20rem",
+        height: "25rem",
+        padding: 10,
         [breakpoints.up("sm")]: {
-          margin: 0
+          margin: 0,
+          maxWidth: "50vw"
         }
-      }
-    },
-    MuiGrid: {
-      container: {
-        maxWidth: "95vw",
-        justifyContent: "center",
-        gridGap: 3,
-        marginTop: 10
       }
     }
   }
@@ -41,7 +37,7 @@ const Books = props => {
       <React.Fragment>
         {props.bookLists.map(book => {
           return (
-            <Grid item xs={12} sm={6} md={4} key={book.infoLink}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={book.infoLink}>
               <MuiThemeProvider theme={theme}>
                 <Card>
                   {book.authors ? (
@@ -103,15 +99,14 @@ const Books = props => {
   }
 
   return (
-    <div>
-      <MuiThemeProvider theme={theme}>
-        <Grid container spacing={3} style={{ margin: "10px 20px 10px 10px" }}>
-          <Grid container spacing={3}>
-            <FormRow />
-          </Grid>
-        </Grid>
-      </MuiThemeProvider>
-    </div>
+    <Grid
+      container
+      spacing={4}
+      justify="center"
+      style={{ flexGrow: 1, margin: "auto", marginTop: 80, maxWidth: "90vw" }}
+    >
+      <FormRow />
+    </Grid>
   );
 };
 
