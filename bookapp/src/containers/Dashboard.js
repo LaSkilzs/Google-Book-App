@@ -7,34 +7,12 @@ import {
   Chip,
   Avatar
 } from "@material-ui/core";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import InputBase from "@material-ui/core/InputBase";
 import FaceIcon from "@material-ui/icons/Face";
 import API from "../Api";
 import Books from "./Books";
-
-// paper
-// element.style {
-//   padding: 5px;
-//   width: 250px;
-//   margin: 150px auto;
-// }
-
-//button
-// element.style {
-//   margin - top: 10px;
-//   height: 55px;
-// }
-// <style>
-//   .MuiButton-sizeLarge {
-//     padding: 6px 12px;
-//   font-size: 0.9375rem;
-// }
-
-//InputBase
-// element.style {
-//   margin: 8px;
-//   width: 100px;
-// }
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -122,67 +100,100 @@ class Dashboard extends React.Component {
 
   render() {
     const { showBooks, errorMessage } = this.state;
+
     const classes = makeStyles(theme => ({
       root: {
         padding: theme.spacing(0)
       }
     }));
 
+    const breakpoints = createBreakpoints({});
+    const theme = createMuiTheme({
+      breakpoints,
+      overrides: {
+        MuiInputBase: {
+          input: {
+            minWidth: "80vw",
+            textAlign: "center",
+            margin: "auto",
+            [breakpoints.up("sm")]: {
+              minWidth: 300,
+              margin: 8
+            }
+          }
+        },
+        MuiButton: {
+          sizeLarge: {
+            width: "100%",
+            [breakpoints.up("sm")]: {
+              width: 0
+            }
+          }
+        },
+        MuiPaper: {
+          rounded: {
+            width: "85vw",
+            [breakpoints.up("sm")]: { width: 450 }
+          }
+        }
+      }
+    });
+
     return (
       <React.Fragment>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Paper
-              className={classes.root}
-              style={{
-                padding: 10,
-                margin: "auto",
-                marginTop: 100,
-                width: 450
-              }}
-            >
-              <InputBase
-                type="search"
-                id="filled-full-width"
-                style={{ margin: 8, width: 300 }}
-                placeholder="Search for book by title"
-                variant="filled"
-                value={this.state.query}
-                onChange={e => this.handleSearch(e.target.value)}
-                onKeyPress={e => this.handleEnter(e.key)}
-              />
-
-              <Button
-                variant="outlined"
-                color="primary"
-                size="large"
-                disabled={this.state.disabled}
-                style={{ marginTop: 10, height: 55 }}
-                onClick={e => this.getBooks()}
+        <MuiThemeProvider theme={theme}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Paper
+                className={classes.root}
+                style={{
+                  padding: 10,
+                  margin: "auto",
+                  marginTop: 100
+                }}
               >
-                Search
-              </Button>
-              {errorMessage ? (
-                <Chip
-                  avatar={
-                    <Avatar>
-                      <FaceIcon />
-                    </Avatar>
-                  }
-                  label="no results found"
-                  color="secondary"
-                  variant="outlined"
+                <InputBase
+                  type="search"
+                  id="filled-full-width"
+                  placeholder="Search for Book by Title"
+                  variant="filled"
+                  value={this.state.query}
+                  onChange={e => this.handleSearch(e.target.value)}
+                  onKeyPress={e => this.handleEnter(e.key)}
                 />
-              ) : null}
-            </Paper>
+
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  size="large"
+                  disabled={this.state.disabled}
+                  style={{ marginTop: 10, height: 55 }}
+                  onClick={e => this.getBooks()}
+                >
+                  Search
+                </Button>
+                {errorMessage ? (
+                  <Chip
+                    avatar={
+                      <Avatar>
+                        <FaceIcon />
+                      </Avatar>
+                    }
+                    label="no results found"
+                    color="secondary"
+                    variant="outlined"
+                  />
+                ) : null}
+              </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-        {showBooks ? (
-          <Books
-            bookLists={this.state.books}
-            handleRefresh={this.handleRefresh}
-          />
-        ) : null}
+          {showBooks ? (
+            <Books
+              bookLists={this.state.books}
+              handleRefresh={this.handleRefresh}
+            />
+          ) : null}
+        </MuiThemeProvider>
       </React.Fragment>
     );
   }
