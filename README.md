@@ -10,7 +10,7 @@ Create an application that allows you to use the Google Books API to search for 
 
 1. npm install && npm run start
 2. npm run test
-3. https://naughty-newton-c5cb02.netlify.com
+3. https://wizardly-colden-613f26.netlify.com
 
 Type name of book that you would like to find, and click on search. If the book is available, a list of books shall appear. You can click on see more, if you would like more information about the book.
 
@@ -48,3 +48,7 @@ Feedback Due: due by end of day on Saturday, June 6.
 5. Build FrontEnd Functionality
 6. Write Tests
 7. Deploy using Netlify
+
+Logs: https://app.netlify.com/sites/wizardly-colden-613f26/deploys/5d1f901760fcfa6701d5f476
+Unique Deploy URL: https://5d1f901760fcfa6701d5f476--wizardly-colden-613f26.netlify.com
+Live URL: https://wizardly-colden-613f26.netlify.com
