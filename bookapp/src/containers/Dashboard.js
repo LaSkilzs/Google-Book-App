@@ -117,6 +117,8 @@ class Dashboard extends React.Component {
             minWidth: "80vw",
             textAlign: "center",
             margin: "auto",
+            fontSize: "1.3rem",
+            padding: "1.5rem",
             [breakpoints.up("sm")]: {
               minWidth: 300,
               margin: 8
@@ -126,15 +128,18 @@ class Dashboard extends React.Component {
         MuiButton: {
           sizeLarge: {
             width: "100%",
+            fontSize: "1.5rem",
             [breakpoints.up("sm")]: {
-              width: 0
+              width: "100px",
+              padding: "8px 24px",
+              fontSize: "1rem"
             }
           }
         },
         MuiPaper: {
           rounded: {
             width: "85vw",
-            [breakpoints.up("sm")]: { width: 450 }
+            [breakpoints.up("sm")]: { width: 600 }
           }
         }
       }
@@ -168,7 +173,6 @@ class Dashboard extends React.Component {
                   color="primary"
                   size="large"
                   disabled={this.state.disabled}
-                  style={{ marginTop: 10, height: 55 }}
                   onClick={e => this.getBooks()}
                 >
                   Search

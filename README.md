@@ -43,3 +43,10 @@ Feedback Due: due by end of day on Saturday, June 6.
 
 1. Completed deliverables in order
 2. Deployed using netlify
+
+## Peer UI Design FeedBack
+
+1. Make Cards the same height (set explicit height)
+2. Set Max height to 1220 on 1400++ screens
+3. Search — button (remove 10px off top on desktop)
+4. Search Button - left padding and right padding give search more space
