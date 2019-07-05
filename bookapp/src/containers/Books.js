@@ -85,7 +85,8 @@ const Books = props => {
                     >
                       <Link
                         href={book.infoLink}
-                        color="inherit"
+                        color="primary"
+                        variant="h6"
                         onClick={() => props.handleRefresh()}
                       >
                         {"see more info"}
