@@ -12,7 +12,7 @@ Create an application that allows you to use the Google Books API to search for 
 
 1. npm install && npm run start
 2. npm run test
-3. https://pensive-euler-c9ecb5.netlify.com
+3. https://gifted-ride-ce33fd.netlify.com
 
 Type name of book that you would like to find, and click on search. If the book is available, a list of books shall appear. You can click on see more, if you would like more information about the book.
 
