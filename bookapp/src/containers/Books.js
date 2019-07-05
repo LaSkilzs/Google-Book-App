@@ -23,6 +23,14 @@ const theme = createMuiTheme({
           margin: 0
         }
       }
+    },
+    MuiGrid: {
+      container: {
+        maxWidth: "95vw",
+        justifyContent: "center",
+        gridGap: 3,
+        marginTop: 10
+      }
     }
   }
 });
@@ -60,12 +68,12 @@ const Books = props => {
                   {book.imageLinks ? (
                     <CardMedia
                       image={book.imageLinks.smallThumbnail}
-                      style={{ height: 170, width: 100, margin: "auto" }}
+                      style={{ height: 150, width: 80, margin: "auto" }}
                     />
                   ) : (
                     <CardMedia
                       image="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg"
-                      style={{ height: 170, width: 100, margin: "auto" }}
+                      style={{ height: 150, width: 80, margin: "auto" }}
                     />
                   )}
 
@@ -95,11 +103,13 @@ const Books = props => {
 
   return (
     <div>
-      <Grid container style={{ marginTop: 20 }}>
-        <Grid container spacing={3}>
-          <FormRow />
+      <MuiThemeProvider theme={theme}>
+        <Grid container spacing={3} style={{ margin: "10px 20px 10px 10px" }}>
+          <Grid container spacing={3}>
+            <FormRow />
+          </Grid>
         </Grid>
-      </Grid>
+      </MuiThemeProvider>
     </div>
   );
 };

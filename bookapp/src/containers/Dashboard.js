@@ -141,9 +141,9 @@ class Dashboard extends React.Component {
 
     return (
       <React.Fragment>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={theme}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
               <Paper
                 className={classes.root}
                 style={{
@@ -185,15 +185,15 @@ class Dashboard extends React.Component {
                   />
                 ) : null}
               </Paper>
-            </MuiThemeProvider>
+            </Grid>
           </Grid>
-        </Grid>
-        {showBooks ? (
-          <Books
-            bookLists={this.state.books}
-            handleRefresh={this.handleRefresh}
-          />
-        ) : null}
+          {showBooks ? (
+            <Books
+              bookLists={this.state.books}
+              handleRefresh={this.handleRefresh}
+            />
+          ) : null}
+        </MuiThemeProvider>
       </React.Fragment>
     );
   }
