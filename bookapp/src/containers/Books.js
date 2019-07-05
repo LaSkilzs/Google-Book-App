@@ -20,7 +20,7 @@ const theme = createMuiTheme({
       root: {
         margin: "auto",
         maxWidth: "20rem",
-        height: "25rem",
+        height: "30rem",
         padding: 10,
         [breakpoints.up("sm")]: {
           margin: 0,
