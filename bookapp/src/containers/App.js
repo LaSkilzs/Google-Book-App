@@ -6,7 +6,7 @@ import Header from "../components/Header";
 class App extends React.Component {
   render() {
     return (
-      <div className="App" style={{ background: "fixed" }}>
+      <div className="App">
         <Header />
         <Dashboard />
       </div>
