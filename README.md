@@ -10,7 +10,7 @@ Create an application that allows you to use the Google Books API to search for 
 
 1. npm install && npm run start
 2. npm run test
-3. https://wizardly-colden-613f26.netlify.com
+3. https://pensive-euler-c9ecb5.netlify.com
 
 Type name of book that you would like to find, and click on search. If the book is available, a list of books shall appear. You can click on see more, if you would like more information about the book.
 
@@ -41,14 +41,12 @@ Feedback Due: due by end of day on Saturday, June 6.
 
 ## My WorkFlow
 
-1. Diagram (UI & Flow)
-2. Create App
-3. Test API Connection
-4. Create UI Framework
-5. Build FrontEnd Functionality
-6. Write Tests
-7. Deploy using Netlify
+1. Completed deliverables in order
+2. Deployed using netlify
 
-Logs: https://app.netlify.com/sites/wizardly-colden-613f26/deploys/5d1f901760fcfa6701d5f476
-Unique Deploy URL: https://5d1f901760fcfa6701d5f476--wizardly-colden-613f26.netlify.com
-Live URL: https://wizardly-colden-613f26.netlify.com
+## Peer UI Design FeedBack
+
+1. Make Cards the same height (set explicit height)
+2. Set Max height to 1220 on 1400++ screens
+3. Search — button (remove 10px off top on desktop)
+4. Search Button - left padding and right padding give search more space
