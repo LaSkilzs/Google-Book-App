@@ -7,7 +7,6 @@ import {
   Chip,
   Avatar
 } from "@material-ui/core";
-
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import createBreakpoints from "@material-ui/core/styles/createBreakpoints";
 import InputBase from "@material-ui/core/InputBase";
@@ -38,7 +37,8 @@ class Dashboard extends React.Component {
         showBooks: !this.state.showBooks,
         books: JSON.parse(localStorage["books"])
       });
-      localStorage.clear();
+      let refresh = false;
+      localStorage.setItem("refresh", refresh);
     }
   }
 
