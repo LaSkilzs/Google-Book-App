@@ -36,8 +36,8 @@ Type name of book that you would like to find, and click on search. If the book 
 2. Version Control History
 3. Read Me
 
-Due date: Both components of this step are due by end of day on Wednesday, June 26.
-Feedback Due: due by end of day on Saturday, June 6.
+-- Due date: Both components of this step are due by end of day on Wednesday, June 26.
+-- Feedback Due: due by end of day on Saturday, June 6.
 
 ## My WorkFlow
 
