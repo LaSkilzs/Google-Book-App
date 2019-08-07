@@ -1,6 +1,6 @@
-# 8th-Light-Book-App
+# Book-App
 
-code challenge for 8th Light, create a book app using the google api and deploy the app.
+create a book app using the google api and deploy the app.
 
 ## Directions
 
@@ -36,9 +36,6 @@ Type name of book that you would like to find, and click on search. If the book 
 2. Version Control History
 3. Read Me
 
--- Due date: Both components of this step are due by end of day on Wednesday, June 26.
-
--- Feedback Due: due by end of day on Saturday, June 6.
 
 ## My WorkFlow
 
